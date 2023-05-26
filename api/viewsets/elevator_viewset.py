@@ -15,15 +15,13 @@ class ElevatorViewSet(viewsets.ModelViewSet):
     serializer_class = ElevatorSerializer
 
     @action(detail=True, methods=['GET'])
-    def next_destination_floor(self, request, pk=None, elevator_system=None):
+    def status(self, request, pk=None, elevator_system=None):
         """Fetch the next destination floor for a given elevator."""
         try:
             elevator = self.queryset.filter(elevator_system=elevator_system).get(pk=pk)
-            next_floor = elevator.current_floor
             response = {}
-            response['next_floor'] = next_floor
             response['elevator_system'] = elevator_system
-            response['elevator'] = pk
+            response['data'] = self.get_serializer(elevator).data
             return Response(response)
         except Exception as e:
             return Response({'error': str(e)}, status=404)
