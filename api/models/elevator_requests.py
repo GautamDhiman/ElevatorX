@@ -9,7 +9,7 @@ class ElevatorRequest(BaseModel):
     elevator = models.ForeignKey('Elevator', on_delete=models.CASCADE)
     requested_from_floor = models.IntegerField()
     requested_to_floor = models.IntegerField()
-    is_serviced = models.BooleanField(default=False)
+    is_serviced = models.BooleanField(default=True)
 
     def __str__(self):
         return self.elevator + " requested from floor " + self.requested_from_floor
