@@ -6,4 +6,4 @@ class ElevatorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Elevator
-        fields = '__all__'
+        exclude = ('created_at', 'updated_at')
