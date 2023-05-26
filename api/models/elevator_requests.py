@@ -2,12 +2,11 @@
 
 from django.db import models
 from api.models.base_model import BaseModel
-from api.models.elevator import Elevator
 
 class ElevatorRequest(BaseModel):
     """Model class for Elevator Requests"""
 
-    elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE)
+    elevator = models.ForeignKey('Elevator', on_delete=models.CASCADE)
     requested_from_floor = models.IntegerField()
     requested_to_floor = models.IntegerField()
     is_serviced = models.BooleanField(default=False)

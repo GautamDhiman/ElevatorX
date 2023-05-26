@@ -6,7 +6,7 @@ from api.models.base_model import BaseModel
 
 class Elevator(BaseModel):
     """Model class for Elevator"""
-
+    elevator_system = models.ForeignKey('ElevatorSystem', on_delete=models.CASCADE)
     elevator_number = models.IntegerField()
     current_floor = models.IntegerField()
     is_door_open = models.BooleanField(default=True)
