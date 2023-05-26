@@ -25,3 +25,18 @@ class ElevatorViewSet(viewsets.ModelViewSet):
             return Response(response)
         except Exception as e:
             return Response({'error': str(e)}, status=404)
+
+    @action(detail=True, methods=['PATCH'])
+    def update(self, request, pk=None, elevator_system=None):
+        """Update elevator."""
+        try:
+            elevator = self.queryset.filter(elevator_system=elevator_system).get(pk=pk)
+            serializer = self.get_serializer(elevator, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                response = {}
+                response['elevator_system'] = elevator_system
+                response['data'] = serializer.data
+                return Response(response)
+        except Exception as e:
+            return Response({'error': str(e)}, status=404)
