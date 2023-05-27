@@ -67,7 +67,7 @@ Elevator management system using Rest Apis
 └── erd.png
 ```
    
-## ERD png
+## ERD
 ![ERD](erd.png)
 
 ## Thought Process
