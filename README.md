@@ -66,9 +66,6 @@ Elevator management system using Rest Apis
 ├── requirements.txt
 └── erd.png
 ```
-   
-## ERD
-![ERD](erd.png)
 
 ## Thought Process
 - The elevator system has a name, number of elevators and number of floors
